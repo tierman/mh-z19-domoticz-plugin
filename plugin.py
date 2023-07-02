@@ -4,7 +4,7 @@
 #
 
 """
-<plugin key="MH-Z19" name="AHT10" author="tjonczyk" version="0.0.1">
+<plugin key="MH-Z19" name="MH-Z19" author="tjonczyk" version="0.0.1">
     <description>
         MH-Z19 Sensor Plugin.<br/>
         Install mh_z19 python plugin before using this plugin.mh_z19.<br/>
