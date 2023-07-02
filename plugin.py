@@ -39,14 +39,14 @@ class BasePlugin:
     deviceName = "Mhz19Device"
 
     def onStart(self):
-        Domoticz.Log(deviceName + ": onStart")
+        Domoticz.Log(self.deviceName + ": onStart")
 
         deviceFound = False
         for Device in Devices:
             if (("Name" in Devices[Device].Options) and (
-                    Devices[Device].Options["Name"] == deviceName)): deviceFound = True
+                    Devices[Device].Options["Name"] == self.deviceName)): deviceFound = True
         if (deviceFound == False):
-            Domoticz.Device(Name=deviceName, Unit=1, TypeName="Custom", Options={"Name": deviceName;'Custom': '1;CO2'}).Create()
+            Domoticz.Device(Name=self.deviceName, Unit=1, TypeName="Custom", Options={"Name": self.deviceName}).Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
@@ -60,9 +60,9 @@ class BasePlugin:
         data = m.getData()
 
         for Device in Devices:
-            if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == "Mhz19Device")):
-                Devices[Device].Update(1, str(data[0]) + ';' + str(data[1]) + ';0')
-                Domoticz.Log("update device:" + str(data[0]) + ';' + str(data[1]))
+            if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == self.deviceName)):
+                Devices[Device].Update(1, str(data)
+                Domoticz.Log("update device:" + str(data))
 
 global _plugin
 _plugin = BasePlugin()
