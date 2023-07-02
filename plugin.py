@@ -24,7 +24,7 @@
 </plugin>
 """
 
-import mh_z19, Domoticz
+import mh_z19, Domoticz, json
 
 
 class Mhz19Device:
