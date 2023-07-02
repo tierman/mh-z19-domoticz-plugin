@@ -31,6 +31,7 @@ class Mhz19Device:
 
     def getData(self):
         co2 = mh_z19.read()
+        Domoticz.Log(self.deviceName + " - getData: " + co2)
         co2Value = json.loads(co2)
         return co2Value["co2"]
 
