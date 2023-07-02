@@ -24,7 +24,7 @@
 </plugin>
 """
 
-import mh_z19, Domoticz, json
+import mh_z19, Domoticz
 
 
 class Mhz19Device:
@@ -61,7 +61,7 @@ class BasePlugin:
 
         for Device in Devices:
             if (("Name" in Devices[Device].Options) and (Devices[Device].Options["Name"] == self.deviceName)):
-                Devices[Device].Update(1, str(data)
+                Devices[Device].Update(1, str(data))
                 Domoticz.Log("update device:" + str(data))
 
 global _plugin
