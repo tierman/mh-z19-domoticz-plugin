@@ -48,8 +48,8 @@ class BasePlugin:
         deviceFound = False
         for Device in Devices:
             if (Devices[Device].Name == self.deviceName): deviceFound = True
-        if (deviceFound == False):
-            Domoticz.Device(Name=self.deviceName, Unit=18, TypeName="Custom", Options={"Name": self.deviceName}).Create()
+            if (deviceFound == False):
+                Domoticz.Device(Name=self.deviceName, Unit=18, TypeName="Custom", Options={"Name": self.deviceName}).Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
@@ -63,6 +63,7 @@ class BasePlugin:
         data = m.getData()
 
         for Device in Devices:
+            Domoticz.Log("AAAAAA device:" + str(Devices[Device].Name))
             if (Devices[Device].Name == self.deviceName):
                 Domoticz.Log("update device:" + str(data))
                 Devices[Device].Update(1, str(data))
