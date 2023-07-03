@@ -34,7 +34,7 @@ class Mhz19Device:
         co2 = co2.replace("\'", "\"")
         Domoticz.Log("Mhz19Device - getData: " + co2)
         co2Value = json.loads(co2)
-        Domoticz.Log("Mhz19Device - getData after decode: " + co2Value["co2"])
+        Domoticz.Log("Mhz19Device - getData after decode: " + str(co2Value["co2"]))
 
         return co2Value["co2"]
 
