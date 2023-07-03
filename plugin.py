@@ -50,7 +50,7 @@ class BasePlugin:
             if ("Name" in Devices[Device].Options
                     and Devices[Device].Options["Name"] == self.deviceName): deviceFound = True
             if (deviceFound == False):
-                Domoticz.Device(Name=self.deviceName, Unit=18, Type="General", TypeName="Custom", Options={"Name": self.deviceName}).Create()
+                Domoticz.Device(Name=self.deviceName, Unit=1, Type="General", TypeName="Custom", Options={"Name": self.deviceName}).Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
