@@ -59,7 +59,7 @@ class BasePlugin:
         Domoticz.Log("onMessage called")
 
     def onHeartbeat(self):
-        Domoticz.Log("onHeartbeat called")
+        Domoticz.Log("onHeartbeat calledaaaaa")
         m = Mhz19Device()
         data = m.getData()
 
