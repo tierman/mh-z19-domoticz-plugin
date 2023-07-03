@@ -64,8 +64,7 @@ class BasePlugin:
         data = m.getData()
 
         for Device in Devices:
-            if ("Name" in Devices[Device].Options and
-                    Devices[Device].Options["Name"] == self.deviceName):
+            if (Devices[Device].Name == self.deviceName):
                 Domoticz.Log("update device:" + str(data))
                 Devices[Device].Update(1, str(data))
 
