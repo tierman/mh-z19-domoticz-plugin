@@ -47,8 +47,7 @@ class BasePlugin:
 
         deviceFound = False
         for Device in Devices:
-            if (("Name" in Devices[Device].Options) and (
-                    Devices[Device].Options["Name"] == self.deviceName)): deviceFound = True
+            if (Devices[Device].Name == self.deviceName): deviceFound = True
         if (deviceFound == False):
             Domoticz.Device(Name=self.deviceName, Unit=18, TypeName="Custom", Options={"Name": self.deviceName}).Create()
 
