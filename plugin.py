@@ -30,9 +30,10 @@ import mh_z19, Domoticz, json
 class Mhz19Device:
 
     def getData(self):
-        co2 = mh_z19.read()
-        Domoticz.Log("Mhz19Device - getData: " + str(co2))
-        co2Value = json.loads(str(co2).replace("\'", "\""))
+        co2 = str(mh_z19.read())
+        co2 = co2.replace("\'", "\"")
+        Domoticz.Log("Mhz19Device - getData: " + co2)
+        co2Value = json.loads(co2)
         Domoticz.Log("Mhz19Device - getData after decode: " + co2Value["co2"])
 
         return co2Value["co2"]
