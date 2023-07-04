@@ -40,11 +40,12 @@ class Mhz19Device:
 
 
 class BasePlugin:
-    deviceName = "Mhz19Device1"
+    deviceName = "Mhz19Device"
 
     def onStart(self):
         Domoticz.Log(self.deviceName + ": onStart")
         Domoticz.Log("onStart" + str(Devices))
+
         deviceFound = False
         for Device in Devices:
             if ("Name" in Devices[Device].Options
