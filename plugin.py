@@ -61,7 +61,7 @@ class BasePlugin:
         Domoticz.Log("onHeartbeat called")
         m = Mhz19Device()
         data = m.getData()
-        Domoticz.Log("onHeartbeat data: " + str(data))
+        Domoticz.Log("onHeartbeat data: " + str(Devices.size()))
 
         for Device in Devices:
             Domoticz.Log("onHeartbeat data: " + str(Device.DeviceID))
