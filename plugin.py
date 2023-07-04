@@ -24,8 +24,9 @@
 </plugin>
 """
 
-import mh_z19, Domoticz, json
-
+import mh_z19
+import json
+import DomoticzEx as Domoticz
 
 class Mhz19Device:
 
@@ -43,7 +44,7 @@ class BasePlugin:
 
     def onStart(self):
         Domoticz.Log(self.deviceName + ": onStart")
-
+        Domoticz.Log("onStart" + str(Devices))
         deviceFound = False
         for Device in Devices:
             if ("Name" in Devices[Device].Options
