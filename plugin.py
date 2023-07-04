@@ -26,7 +26,7 @@
 
 import mh_z19
 import json
-import DomoticzEx as Domoticz
+import Domoticz
 
 class Mhz19Device:
 
