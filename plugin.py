@@ -35,7 +35,6 @@ class Mhz19Device:
         Domoticz.Log("Mhz19Device - getData: " + co2)
         co2Json = json.loads(co2)
         co2Value = co2Json["co2"]
-        Domoticz.Log("Mhz19Device - getData after decode: " + str(co2Value))
         return co2Value
 
 
@@ -62,8 +61,9 @@ class BasePlugin:
         Domoticz.Log("onHeartbeat called")
         m = Mhz19Device()
         data = m.getData()
+        Domoticz.Log("onHeartbeat data: " + str(data))
+
         for Device in Devices:
-            Domoticz.Log("AAAAA device:" + str(Device.Name))
             if ("Name" in Devices[Device].Options
                     and Devices[Device].Options["Name"] == self.deviceName):
                 Domoticz.Log("update device:" + str(data))
