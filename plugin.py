@@ -44,19 +44,17 @@ class BasePlugin:
 
     def onStart(self):
         Domoticz.Log(self.deviceName + ": onStart")
-        Domoticz.Log("onStart" + str(Devices))
-
         deviceFound = False
         for Device in Devices:
-            if ("Name" in Devices[Device].Options
-                    and Devices[Device].Options["Name"] == str(self.deviceName)): deviceFound = True
+            if self.deviceName in Devices[Device].Name:
+                deviceFound = True
 
-        if (deviceFound == False):
+        if deviceFound == False:
             Domoticz.Device(Name=self.deviceName,
                             Unit=len(Devices) + 1,
                             Type=243,
                             Subtype=31,
-                            Options={"Name": str(self.deviceName), "Custom": "1;<axisUnits>"}).Create()
+                            Options={"Custom": "1;<axisUnits>"}).Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
@@ -71,8 +69,7 @@ class BasePlugin:
 
         for Device in Devices:
             Domoticz.Log("onHeartbeat data: " + str(Devices[Device].Options))
-            if ("Name" in Devices[Device].Options
-                    and Devices[Device].Options["Name"] == self.deviceName):
+            if self.deviceName in Devices[Device].Name:
                 Domoticz.Log("update device:" + str(data))
                 Devices[Device].Update(-1, data)
 
