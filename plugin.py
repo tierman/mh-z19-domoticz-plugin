@@ -75,7 +75,7 @@ class BasePlugin:
             if ("Name" in Devices[Device].Options
                     and Devices[Device].Options["Name"] == self.deviceName):
                 Domoticz.Log("update device:" + str(data))
-                Devices[Device].Update(1, str(data))
+                Devices[Device].Update(-1, data)
 
 global _plugin
 _plugin = BasePlugin()
