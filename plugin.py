@@ -56,8 +56,7 @@ class BasePlugin:
                             Unit=len(Devices) + 1,
                             Type=243,
                             Subtype=31,
-                            Options={"Custom": "1;<axisUnits>",
-                                     "Name": str(self.deviceName)}).Create()
+                            Options={"Custom": "1;<axisUnits>", "Name": str(self.deviceName)}).Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
