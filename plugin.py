@@ -69,9 +69,9 @@ class BasePlugin:
         Domoticz.Log("onHeartbeat called")
         m = Mhz19Device()
         data = m.getData()
-        Domoticz.Log("onHeartbeat data: " + str(Devices))
 
         for Device in Devices:
+            Domoticz.Log("onHeartbeat data: " + str(Devices[Device].Options))
             if ("Name" in Devices[Device].Options
                     and Devices[Device].Options["Name"] == self.deviceName):
                 Domoticz.Log("update device:" + str(data))
