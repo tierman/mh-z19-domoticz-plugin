@@ -31,11 +31,11 @@ import Domoticz
 class Mhz19Device:
 
     def getData(self):
-        co2 = str(mh_z19.read())
-        co2 = co2.replace("\'", "\"")
-        Domoticz.Log("Mhz19Device - getData: " + co2)
-        co2Json = json.loads(co2)
-        co2Value = co2Json["co2"]
+        allData = str(mh_z19.read_all())
+        allData = allData.replace("\'", "\"")
+        Domoticz.Log("Mhz19Device - getData: " + allData)
+        allDataJson = json.loads(allData)
+        co2Value = allDataJson["co2"]
         return co2Value
 
 
@@ -54,7 +54,7 @@ class BasePlugin:
                             Unit=len(Devices) + 1,
                             Type=243,
                             Subtype=31,
-                            Options={"Custom": "1;CO2"}).Create()
+                            Options={"Custom": "1;CO2 (ppm)"}).Create()
 
     def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
@@ -68,10 +68,9 @@ class BasePlugin:
         data = m.getData()
 
         for Device in Devices:
-            Domoticz.Log("onHeartbeat data: " + str(Devices[Device].Options))
             if self.deviceName in Devices[Device].Name:
                 Devices[Device].Update(1, str(data))
-                Domoticz.Log("update device:" + self.deviceName + ", with value: " + str(data))
+                Domoticz.Log("update device:" + self.deviceName + ", with value: " + str(data) + "(ppm)")
 
 global _plugin
 _plugin = BasePlugin()
