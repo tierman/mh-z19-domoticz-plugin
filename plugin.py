@@ -70,8 +70,8 @@ class BasePlugin:
         for Device in Devices:
             Domoticz.Log("onHeartbeat data: " + str(Devices[Device].Options))
             if self.deviceName in Devices[Device].Name:
+                Devices[Device].Update(1, str(data))
                 Domoticz.Log("update device:" + self.deviceName + ", with value: " + str(data))
-                Devices[Device].Update(1, '0;' + str(data))
 
 global _plugin
 _plugin = BasePlugin()
